@@ -2,7 +2,7 @@
 
 ## Resumo
 
-Este projeto consiste no desenvolvimento de um programa de ETL (Extract, Transform, Load) utilizando Python. As etapas abordadas incluem:
+Este projeto consiste no desenvolvimento de um programa de ETL (Extract, Transform, Load) utilizando Python para validar dados Excel. As etapas abordadas incluem:
 
 1. **Extração de Dados**: Coleta de dados de diferentes fontes, como arquivos CSV, bancos de dados ou APIs.
 2. **Transformação de Dados**: Processamento e limpeza dos dados para adequá-los ao formato necessário.
