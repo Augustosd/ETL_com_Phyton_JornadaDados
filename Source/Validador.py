@@ -1,23 +1,20 @@
-from datetime import date
-from typing import Optional
 from pydantic import BaseModel, Field
+from typing import Optional
 
-class Campanha(BaseModel):
+class PlanilhaVendas(BaseModel):
     Organizador: int = Field(..., description="Identificador do organizador")
-    Ano_Mes: str = Field(..., description="Ano e mês no formato 'AAAA | Mês'")
-    Dia_da_Semana: str = Field(..., description="Dia da semana")
-    Tipo_Dia: str = Field(..., description="Tipo de dia")
-    Objetivo: str = Field(..., description="Objetivo da campanha")
-    Date: date = Field(..., description="Data no formato AAAA-MM-DD")
-    AdSet_name: str = Field(..., description="Nome do AdSet")
-    Amount_spent: float = Field(..., ge=0, le=2200, description="Valor gasto entre 0 e 2200")
-    Link_clicks: Optional[int] = Field(None, description="Quantidade de cliques no link (valor ausente se não informado)")
-    Impressions: int = Field(..., description="Número de impressões")
-    Conversions: Optional[int] = Field(None, description="Quantidade de conversões (valor ausente se não informado)")
-    Segmentacao: str = Field(..., alias="Segmentação", description="Segmentação da campanha")
-    Tipo_de_Anuncio: str = Field(..., alias="Tipo_de_Anúncio", description="Tipo de anúncio")
+    Ano_Mes: str = Field(..., description="Ano e mês do registro")
+    Dia_da_Semana: str = Field(..., description="Dia da semana correspondente à data")
+    Tipo_Dia: str = Field(..., description="Classificação do dia: útil, feriado, etc.")
+    Objetivo: str = Field(..., description="Objetivo da campanha ou ação")
+    Date: str = Field(..., description="Data da entrada no formato YYYY-MM-DD")
+    AdSet_name: Optional[str] = Field(None, description="Nome do conjunto de anúncios")
+    Amount_spent: float = Field(0.0, ge=0, le=1200.00, description="Valor gasto no anúncio (mínimo 0, máximo 589.96)")
+    Link_clicks: Optional[float] = Field(None, description="Número de cliques no link", nullable=True)
+    Impressions: Optional[float] = Field(0, description="Número de impressões do anúncio", nullable=True)
+    Conversions: Optional[float] = Field(None, description="Número de conversões registradas", nullable=True)
+    Segmentação: Optional[str] = Field(None, description="Segmentação usada no anúncio")
+    Tipo_de_Anúncio: str = Field(..., description="Tipo do anúncio")
     Fase: str = Field(..., description="Fase da campanha")
-
-
 
     
